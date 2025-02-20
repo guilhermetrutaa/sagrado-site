@@ -13,6 +13,7 @@ export default function Home() {
     async function fetchAvisos() {
       try {
         const response = await fetch("https://backend-avisos-port4000.up.railway.app/avisos");
+        if (!response.ok) throw new Error("Erro ao buscar avisos");
         const data = await response.json();
         atualizarAvisos(data);
       } catch (error) {
