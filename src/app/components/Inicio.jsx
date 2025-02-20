@@ -31,10 +31,10 @@ const Inicio = () => {
   };
 
   return (
-    <div className='pt-16 px-4 bg-[#fff] w-full min-h-screen'>
+    <div className='pt-16 px-4 bg-[#fff] w-full h-full'>
       <h1 className='text-[2rem] font-medium text-center text-[#000]'>BEM VINDO(A) AO</h1>
       <div className='flex justify-center items-center pt-2'>
-        <h2 className='text-[2.5rem] font-medium max-w-[20rem] text-center'>AO SITE DO <span className='font-bold text-[#820202]'>SAGRADO CORAÇÃO DE JESUS!</span></h2>
+        <h2 className='text-[2.5rem] font-medium max-w-[20rem] text-center text-[#000]'>AO SITE DO <span className='font-bold text-[#820202]'>SAGRADO CORAÇÃO DE JESUS!</span></h2>
       </div>
       <div className='flex justify-center items-center pt-5'>
         <p className='font-medium text-[1rem] text-center max-w-[16rem] text-[#000]'>Aqui você encontrará atualizações sobre nossas missas, avisos, eventos e muito mais. Fique por dentro de tudo que acontece em nossa comunidade!</p>

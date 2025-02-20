@@ -9,38 +9,22 @@ export default function Home() {
   const [avisos, setAvisos] = useState([]);
 
   useEffect(() => {
-    // 🔹 1. Buscar avisos do backend assim que a página carregar
+    // 🔹 1. Buscar avisos ao carregar a página
     async function fetchAvisos() {
       try {
         const response = await fetch("https://backend-avisos-port4000.up.railway.app/avisos");
         const data = await response.json();
-
-        // Ordena os avisos pela data antes de salvar
-        const avisosOrdenados = data
-          .map(aviso => ({
-            ...aviso,
-            data: parseDate(aviso.data)
-          }))
-          .sort((a, b) => b.data - a.data);
-
-        setAvisos(avisosOrdenados);
+        atualizarAvisos(data);
       } catch (error) {
         console.error("Erro ao buscar avisos:", error);
       }
     }
 
-    fetchAvisos();
+    fetchAvisos(); // Chama a função ao montar o componente
 
-    // 🔹 2. Escutar novos avisos via WebSocket
+    // 🔹 2. Ouvir novos avisos pelo WebSocket
     socket.on("avisos", (novosAvisos) => {
-      setAvisos((avisosAtuais) => {
-        const todosAvisos = [...avisosAtuais, ...novosAvisos].map(aviso => ({
-          ...aviso,
-          data: parseDate(aviso.data)
-        }));
-        
-        return todosAvisos.sort((a, b) => b.data - a.data);
-      });
+      atualizarAvisos(novosAvisos);
     });
 
     return () => {
@@ -48,9 +32,21 @@ export default function Home() {
     };
   }, []);
 
+  // 🔹 Função para atualizar os avisos e ordenar por data
+  function atualizarAvisos(novosAvisos) {
+    const avisosOrdenados = [...novosAvisos]
+      .map(aviso => ({
+        ...aviso,
+        data: parseDate(aviso.data)
+      }))
+      .sort((a, b) => b.data - a.data);
+
+    setAvisos(avisosOrdenados);
+  }
+
+  // 🔹 Converte strings de data corretamente
   function parseDate(dateString) {
     if (!dateString) return new Date(0);
-
     let date = new Date(dateString);
     if (!isNaN(date.getTime())) return date;
 
