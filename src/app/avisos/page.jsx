@@ -73,7 +73,7 @@ export default function Home() {
 
       <div className="flex flex-wrap justify-center gap-4 w-full max-w-5xl pt-10 pb-10">
         {avisos.length === 0 ? (
-           <p className="text-gray-500 text-center w-full">Nenhum evento disponível.<br />Se não tiver aparecendo nenhum aviso, atualize a página.</p>
+           <p className="text-gray-500 text-center w-full">Nenhum evento disponível.<br />Se não tiver aparecendo nenhum<br /> aviso, atualize a página.</p>
         ) : (
           avisos.map((aviso, index) => (
             <div 
