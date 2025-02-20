@@ -45,7 +45,7 @@ const Inicio = () => {
         </button>
       </div>
       
-      <div className='max-w-md mx-auto pt-8 px-4 mb-10'> 
+      <div className='max-w-md mx-auto pt-8 px-4 mb-10 bg-[#fff]'> 
         <Slider {...settings} className='outline-none'>
           {images.map((src, index) => (
             <div key={index} className='flex justify-center'>
