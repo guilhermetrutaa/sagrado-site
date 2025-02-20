@@ -21,14 +21,12 @@ const Inicio = () => {
     autoplaySpeed: 3000,
     arrows: false,
     appendDots: dots => (
-      <div>
+      <div className='bg-[#fff]'>
         <ul className="flex justify-center space-x-2 mt-4"> {dots} </ul>
       </div>
     ),
     customPaging: i => (
-      <div className='bg-[#fff]'>
-        <div className="w-3 h-3 bg-red-800 rounded-full"></div>
-      </div>
+      <div className="w-3 h-3 bg-red-800 rounded-full"></div>
     )
   };
 
