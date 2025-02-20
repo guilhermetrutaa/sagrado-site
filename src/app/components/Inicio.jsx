@@ -31,13 +31,13 @@ const Inicio = () => {
   };
 
   return (
-    <div className='pt-16 px-4 bg-[#fff]'>
-      <h1 className='text-[2rem] font-medium text-center'>BEM VINDO(A) AO</h1>
+    <div className='pt-16 px-4 bg-[#fff] w-full min-h-screen'>
+      <h1 className='text-[2rem] font-medium text-center text-[#000]'>BEM VINDO(A) AO</h1>
       <div className='flex justify-center items-center pt-2'>
         <h2 className='text-[2.5rem] font-medium max-w-[20rem] text-center'>AO SITE DO <span className='font-bold text-[#820202]'>SAGRADO CORAÇÃO DE JESUS!</span></h2>
       </div>
       <div className='flex justify-center items-center pt-5'>
-        <p className='font-medium text-[1rem] text-center max-w-[16rem]'>Aqui você encontrará atualizações sobre nossas missas, avisos, eventos e muito mais. Fique por dentro de tudo que acontece em nossa comunidade!</p>
+        <p className='font-medium text-[1rem] text-center max-w-[16rem] text-[#000]'>Aqui você encontrará atualizações sobre nossas missas, avisos, eventos e muito mais. Fique por dentro de tudo que acontece em nossa comunidade!</p>
       </div>
       <div className='flex justify-center items-center pt-5'>
         <button className=' border-[#820202] p-4 px-14 rounded-[1rem] text-[1.2rem] text-[#820202] tracking-[0.10rem] font-medium border-[0.20rem]'>
