@@ -79,7 +79,7 @@ export default function VerEventos() {
 
       <div className="flex flex-wrap justify-center gap-4 w-full max-w-5xl pt-10 pb-10">
         {eventos.length === 0 ? (
-          <p className="text-gray-500 text-center w-full">Nenhum evento disponível.</p>
+          <p className="text-gray-500 text-center w-full">Nenhum evento disponível.<br />Se não tiver aparecendo nenhum aviso, atualize a página.</p>
         ) : (
           eventos.map((evento, index) => (
             <div 

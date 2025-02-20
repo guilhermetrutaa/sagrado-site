@@ -26,7 +26,9 @@ const Inicio = () => {
       </div>
     ),
     customPaging: i => (
-      <div className="w-3 h-3 bg-red-800 rounded-full"></div>
+      <div className='bg-[#fff]'>
+        <div className="w-3 h-3 bg-red-800 rounded-full"></div>
+      </div>
     )
   };
 
