@@ -9,16 +9,38 @@ export default function Home() {
   const [avisos, setAvisos] = useState([]);
 
   useEffect(() => {
-    socket.on("avisos", (novosAvisos) => {
-      // Verifica e converte a data antes de ordenar
-      const avisosOrdenados = [...novosAvisos]
-        .map(aviso => ({
-          ...aviso,
-          data: parseDate(aviso.data) // Converte a data corretamente
-        }))
-        .sort((a, b) => b.data - a.data); // Ordena do mais novo para o mais antigo
+    // 🔹 1. Buscar avisos do backend assim que a página carregar
+    async function fetchAvisos() {
+      try {
+        const response = await fetch("https://backend-avisos-port4000.up.railway.app/avisos");
+        const data = await response.json();
 
-      setAvisos(avisosOrdenados);
+        // Ordena os avisos pela data antes de salvar
+        const avisosOrdenados = data
+          .map(aviso => ({
+            ...aviso,
+            data: parseDate(aviso.data)
+          }))
+          .sort((a, b) => b.data - a.data);
+
+        setAvisos(avisosOrdenados);
+      } catch (error) {
+        console.error("Erro ao buscar avisos:", error);
+      }
+    }
+
+    fetchAvisos();
+
+    // 🔹 2. Escutar novos avisos via WebSocket
+    socket.on("avisos", (novosAvisos) => {
+      setAvisos((avisosAtuais) => {
+        const todosAvisos = [...avisosAtuais, ...novosAvisos].map(aviso => ({
+          ...aviso,
+          data: parseDate(aviso.data)
+        }));
+        
+        return todosAvisos.sort((a, b) => b.data - a.data);
+      });
     });
 
     return () => {
@@ -26,32 +48,27 @@ export default function Home() {
     };
   }, []);
 
-  // Função para converter diferentes formatos de data
   function parseDate(dateString) {
-    if (!dateString) return new Date(0); // Se não houver data, retorna uma data padrão
+    if (!dateString) return new Date(0);
 
-    // Se já for um formato válido, retorna a data
     let date = new Date(dateString);
     if (!isNaN(date.getTime())) return date;
 
-    // Se estiver no formato DD/MM/YYYY, precisamos converter
     const parts = dateString.split("/");
     if (parts.length === 3) {
       const [day, month, year] = parts;
       return new Date(`${year}-${month}-${day}`);
     }
 
-    return new Date(0); // Retorna uma data inválida se não conseguir converter
+    return new Date(0);
   }
 
   return (
     <div className="flex flex-col items-center justify-start h-screen bg-white">
-      {/* Cabeçalho com fundo vermelho */}
       <div style={{ backgroundImage: 'url(/BG1.svg)' }} className="w-full h-40 flex items-center justify-center relative bg-center">
         <h1 className="text-white text-[3rem] font-extrabold">AVISOS</h1>
       </div>
 
-      {/* Texto de Avisos */}
       <div className="mt-10 text-center">
         <p className="text-lg text-black font-medium">Veja nossos avisos:</p>
         <div className="w-20 h-1 bg-black mt-1 mx-auto"></div>
@@ -66,7 +83,7 @@ export default function Home() {
               key={index} 
               className="bg-white shadow-lg rounded-lg p-4 w-64 flex flex-col items-center"
             >
-              <p className="text-lg text-center">{aviso.texto}</p>
+              <p className="text-lg text-center text-[#000]">{aviso.texto}</p>
               {aviso.imagem && <img src={aviso.imagem} alt="Aviso" className="mt-2 w-full rounded" />}
               <span className="text-sm text-gray-500 mt-2">
                 {aviso.data.toLocaleString("pt-BR")}

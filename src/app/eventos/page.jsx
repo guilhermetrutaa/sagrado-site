@@ -9,21 +9,59 @@ export default function VerEventos() {
   const [eventos, setEventos] = useState([]);
 
   useEffect(() => {
-    socket.on("eventos", (novosEventos) => {
-      const eventosOrdenados = [...novosEventos]
-        .map(evento => ({
-          ...evento,
-          data: new Date(evento.data) // Corrige o formato da data
-        }))
-        .sort((a, b) => b.data - a.data);
+    // 🔹 1. Buscar eventos do backend ao carregar a página
+    async function fetchEventos() {
+      try {
+        const response = await fetch("https://backend-avisos-port4000.up.railway.app/eventos");
+        const data = await response.json();
 
-      setEventos(eventosOrdenados);
+        // Ordena os eventos pela data antes de salvar
+        const eventosOrdenados = data
+          .map(evento => ({
+            ...evento,
+            data: parseDate(evento.data)
+          }))
+          .sort((a, b) => b.data - a.data);
+
+        setEventos(eventosOrdenados);
+      } catch (error) {
+        console.error("Erro ao buscar eventos:", error);
+      }
+    }
+
+    fetchEventos();
+
+    // 🔹 2. Escutar novos eventos via WebSocket
+    socket.on("eventos", (novosEventos) => {
+      setEventos((eventosAtuais) => {
+        const todosEventos = [...eventosAtuais, ...novosEventos].map(evento => ({
+          ...evento,
+          data: parseDate(evento.data)
+        }));
+        
+        return todosEventos.sort((a, b) => b.data - a.data);
+      });
     });
 
     return () => {
       socket.off("eventos");
     };
   }, []);
+
+  function parseDate(dateString) {
+    if (!dateString) return new Date(0);
+
+    let date = new Date(dateString);
+    if (!isNaN(date.getTime())) return date;
+
+    const parts = dateString.split("/");
+    if (parts.length === 3) {
+      const [day, month, year] = parts;
+      return new Date(`${year}-${month}-${day}`);
+    }
+
+    return new Date(0);
+  }
 
   return (
     <div className="flex flex-col items-center justify-start h-screen bg-white">
@@ -48,7 +86,7 @@ export default function VerEventos() {
               key={index} 
               className="bg-white shadow-lg rounded-lg p-4 w-64 flex flex-col items-center"
             >
-              <p className="text-lg text-center">{evento.texto}</p>
+              <p className="text-lg text-center text-[#000]">{evento.texto}</p>
               {evento.imagem && <img src={evento.imagem} alt="Evento" className="mt-2 w-full rounded" />}
               <span className="text-sm text-gray-500 mt-2">
                 {evento.data.toLocaleString("pt-BR")}

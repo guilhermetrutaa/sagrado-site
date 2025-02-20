@@ -31,7 +31,7 @@ const Inicio = () => {
   };
 
   return (
-    <div className='pt-16 px-4'>
+    <div className='pt-16 px-4 bg-[#fff]'>
       <h1 className='text-[2rem] font-medium text-center'>BEM VINDO(A) AO</h1>
       <div className='flex justify-center items-center pt-2'>
         <h2 className='text-[2.5rem] font-medium max-w-[20rem] text-center'>AO SITE DO <span className='font-bold text-[#820202]'>SAGRADO CORAÇÃO DE JESUS!</span></h2>

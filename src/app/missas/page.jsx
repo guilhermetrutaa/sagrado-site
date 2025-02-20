@@ -43,7 +43,7 @@ const page = () => {
       <div className='pt-5'>
         <div className='bg-[#820202] w-[20rem] flex py-3 text-[#fff] font-medium rounded-[1rem] justify-center items-center gap-5'>
             <p>QUINTA <span className='text-[0.75rem]'>(Hora da Graça)</span></p>
-            <p className='font-bold'>18:00 HORAS</p>
+            <p className='font-bold'>19:00 HORAS</p>
         </div>
       </div>
 
