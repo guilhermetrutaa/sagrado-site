@@ -31,28 +31,30 @@ const Inicio = () => {
   };
 
   return (
-    <div className='pt-16 px-4 bg-[#fff] w-full h-full'>
-      <h1 className='text-[2rem] font-medium text-center text-[#000]'>BEM-VINDO(A) AO</h1>
-      <div className='flex justify-center items-center pt-2'>
-        <h2 className='text-[2.5rem] font-medium max-w-[20rem] text-center text-[#000]'>AO SITE DO <span className='font-bold text-[#820202]'>SAGRADO CORAÇÃO DE JESUS!</span></h2>
-      </div>
-      <div className='flex justify-center items-center pt-5'>
-        <p className='font-medium text-[1rem] text-center max-w-[16rem] text-[#000]'>Aqui você encontrará atualizações sobre nossas missas, avisos, eventos e muito mais. Fique por dentro de tudo que acontece em nossa comunidade!</p>
-      </div>
-      <div className='flex justify-center items-center pt-5'>
-        <button className=' border-[#820202] p-4 px-14 rounded-[1rem] text-[1.2rem] text-[#820202] tracking-[0.10rem] font-medium border-[0.20rem]'>
-            Saiba Mais
-        </button>
-      </div>
-      
-      <div className='max-w-md mx-auto pt-8 px-4 mb-10 bg-[#fff]'> 
-        <Slider {...settings} className='outline-none'>
-          {images.map((src, index) => (
-            <div key={index} className='flex justify-center'>
-              <Image src={src} alt={`Imagem ${index + 1}`} width={500} height={500} className='rounded-xl object-cover'/>
-            </div>
-          ))}
-        </Slider>
+    <div className='bg-[#fff]'>
+      <div className='pt-16 px-4 bg-[#fff] w-full h-full'>
+        <h1 className='text-[2rem] font-medium text-center text-[#000]'>BEM-VINDO(A) AO</h1>
+        <div className='flex justify-center items-center pt-2'>
+          <h2 className='text-[2.5rem] font-medium max-w-[20rem] text-center text-[#000]'>AO SITE DO <span className='font-bold text-[#820202]'>SAGRADO CORAÇÃO DE JESUS!</span></h2>
+        </div>
+        <div className='flex justify-center items-center pt-5'>
+          <p className='font-medium text-[1rem] text-center max-w-[16rem] text-[#000]'>Aqui você encontrará atualizações sobre nossas missas, avisos, eventos e muito mais. Fique por dentro de tudo que acontece em nossa comunidade!</p>
+        </div>
+        <div className='flex justify-center items-center pt-5'>
+          <button className=' border-[#820202] p-4 px-14 rounded-[1rem] text-[1.2rem] text-[#820202] tracking-[0.10rem] font-medium border-[0.20rem]'>
+              Saiba Mais
+          </button>
+        </div>
+        
+        <div className='max-w-md mx-auto pt-8 px-4 mb-10 bg-[#fff]'> 
+          <Slider {...settings} className='outline-none'>
+            {images.map((src, index) => (
+              <div key={index} className='flex justify-center'>
+                <Image src={src} alt={`Imagem ${index + 1}`} width={500} height={500} className='rounded-xl object-cover'/>
+              </div>
+            ))}
+          </Slider>
+        </div>
       </div>
     </div>
   )
