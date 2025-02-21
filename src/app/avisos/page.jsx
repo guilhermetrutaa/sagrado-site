@@ -20,17 +20,19 @@ export default function VerAvisos() {
         const response = await fetch("https://backend-avisos-port4000.up.railway.app/avisos");
         if (!response.ok) throw new Error("Erro ao buscar avisos");
         const data = await response.json();
+        console.log("Avisos recebidos:", data); // Debug para verificar se os avisos estão chegando
         atualizarAvisos(data);
       } catch (error) {
         console.error("Erro ao buscar avisos:", error);
       }
     }
     fetchAvisos();
-
+  
     socket.on("avisos", (novosAvisos) => {
+      console.log("Novos avisos recebidos via WebSocket:", novosAvisos); // Debug WebSocket
       atualizarAvisos(novosAvisos);
     });
-
+  
     return () => {
       socket.off("avisos");
     };
@@ -124,8 +126,8 @@ export default function VerAvisos() {
       {avisoSelecionado && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg w-96 shadow-lg">
-            <h2 className="text-2xl font-bold">{avisoSelecionado.manchete}</h2>
-            <p className="mt-2">{avisoSelecionado.conteudo}</p>
+            <h2 className="text-2xl font-bold text-[#000]">{avisoSelecionado.manchete}</h2>
+            <p className="mt-2 text-[#000]">{avisoSelecionado.conteudo}</p>
             {avisoSelecionado.imagem && (
               <img
                 src={avisoSelecionado.imagem}

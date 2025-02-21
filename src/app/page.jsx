@@ -11,7 +11,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div>
+    <div className="bg-[#fff]">
       <nav className="bg-white shadow-md p-4">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center">
@@ -21,7 +21,7 @@ const Navbar = () => {
           <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-[#820202]">
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-          <ul className={`md:flex md:space-x-6 absolute md:static top-16 left-0 w-full md:w-auto bg-white shadow-md md:shadow-none transition-all duration-300 ease-in-out ${isOpen ? 'block' : 'hidden'}`}>
+          <ul className={`md:flex md:space-x-6 absolute md:static top-24 left-0 w-full md:w-auto bg-white shadow-md md:shadow-none transition-all duration-300 ease-in-out ${isOpen ? 'block' : 'hidden'}`}>
             <li className="p-4 md:p-0 text-[#820202]"><Link href="/">Início</Link></li>
             <li className="p-4 md:p-0 text-[#820202]"><Link href="/avisos">Avisos</Link></li>
             <li className="p-4 md:p-0 text-[#820202]"><Link href="/eventos">Eventos</Link></li>
