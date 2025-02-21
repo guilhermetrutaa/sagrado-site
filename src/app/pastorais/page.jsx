@@ -51,12 +51,12 @@ const page = () => {
       </div>
 
       <div className='pt-[2rem]'>
-        <Image src="/pascom.svg" alt="Pascom" width={267} height={208} className='rounded-[10]'/>
+        <Image src="/pascom.svg" alt="Pascom" width={267} height={208} className='rounded-[1rem]'/>
         <p className='text-[1.2rem] text-[#000] text-center font-semibold pt-[1rem]'>Pascom</p>
       </div>
 
-      <div className='pt-[2rem]'>
-        <Image src="/coroinhas.svg" alt="Coroinhas" width={266} height={168} className='rounded-[10]'/>
+      <div className='pt-[2rem] pb-[2rem]'>
+        <Image src="/coroinhas.svg" alt="Coroinhas" width={266} height={168} className='rounded-[1rem]'/>
         <p className='text-[1.2rem] text-[#000] text-center font-semibold pt-[1rem]'>Coroinhas</p>
         <p className='text-[#000] text-[0.80rem] text-center'>@coroinhas.pscj_</p>
       </div>
