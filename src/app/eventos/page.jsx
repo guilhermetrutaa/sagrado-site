@@ -122,8 +122,8 @@ export default function VerEventos() {
       {eventoSelecionado && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg w-96 shadow-lg">
-            <h2 className="text-2xl font-bold">{eventoSelecionado.manchete}</h2>
-            <p className="mt-2">{eventoSelecionado.conteudo}</p>
+            <h2 className="text-2xl font-bold text-[#000]">{eventoSelecionado.manchete}</h2>
+            <p className="mt-2 text-[#000]">{eventoSelecionado.conteudo}</p>
             {eventoSelecionado.imagem && (
               <img
                 src={eventoSelecionado.imagem}
