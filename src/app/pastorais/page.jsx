@@ -51,14 +51,32 @@ const page = () => {
       </div>
 
       <div className='pt-[2rem]'>
-        <Image src="/pascom.svg" alt="Pascom" width={267} height={208} className='rounded-[1rem]'/>
+        <Image src="/pascom.svg" alt="Pascom" width={267} height={208} className='rounded-[1rem] drop-shadow-xl'/>
         <p className='text-[1.2rem] text-[#000] text-center font-semibold pt-[1rem]'>Pascom</p>
       </div>
 
-      <div className='pt-[2rem] pb-[2rem]'>
-        <Image src="/coroinhas.svg" alt="Coroinhas" width={266} height={168} className='rounded-[1rem]'/>
+      <div className='pt-[2rem]'>
+        <Image src="/coroinhas.svg" alt="Coroinhas" width={266} height={168} className='rounded-[1rem] drop-shadow-xl'/>
         <p className='text-[1.2rem] text-[#000] text-center font-semibold pt-[1rem]'>Coroinhas</p>
         <p className='text-[#000] text-[0.80rem] text-center'>@coroinhas.pscj_</p>
+      </div>
+
+      <div className='pt-[2rem]'>
+        <Image src="/pj.svg" alt="PJ" width={266} height={253} className='rounded-[1rem] drop-shadow-xl'/>
+        <p className='text-[1.2rem] text-[#000] text-center font-semibold pt-[1rem]'>Pastoral da Juventude</p>
+        <p className='text-[#000] text-[0.80rem] text-center'>@pjcatole</p>
+      </div>
+
+      <div className='pt-[2rem]'>
+        <Image src="/pequeninos.svg" alt="PEQUENINOS" width={266} height={157} className='rounded-[1rem] drop-shadow-xl'/>
+        <p className='text-[1.2rem] text-[#000] text-center font-semibold pt-[1rem]'>Pequeninos do Senhor</p>
+        <p className='text-[#000] text-[0.80rem] text-center'>@pequeninosdosenhor.scj</p>
+      </div>
+
+      <div className='pt-[2rem] pb-[2rem]'>
+        <Image src="/crisma.svg" alt="CRISMA" width={266} height={255} className='rounded-[1rem] drop-shadow-xl'/>
+        <p className='text-[1.2rem] text-[#000] text-center font-semibold pt-[1rem]'>Crisma</p>
+        <p className='text-[#000] text-[0.80rem] text-center'>@crisma_pscj</p>
       </div>
     </div>
     </div>
