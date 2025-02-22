@@ -19,7 +19,7 @@ const page = () => {
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
         <ul
-          className={`absolute top-40 left-0 w-full bg-white shadow-md transition-all duration-300 ease-in-out ${
+          className={`absolute z-10 top-40 left-0 w-full bg-white shadow-md transition-all duration-300 ease-in-out ${
             isOpen ? "block" : "hidden"
           }`}
         >
